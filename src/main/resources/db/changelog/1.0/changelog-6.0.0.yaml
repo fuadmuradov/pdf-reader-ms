@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-pdf-reader-calculated-details
+      author: Fuad Muradov
+      changes:
+        - createTable:
+            tableName: pdf_reader_calculated_details
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: source_bank_name
+                  type: VARCHAR(255)
+              - column:
+                  name: is_date_modified
+                  type: BOOLEAN
+              - column:
+                  name: response_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseTableName: pdf_reader_calculated_details
+            baseColumnNames: response_id
+            referencedTableName: pdf_reader_responses
+            referencedColumnNames: id
+            constraintName: fk_calculated_details_response
+            onDelete: CASCADE

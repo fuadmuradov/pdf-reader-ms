@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-pdf-reader-turnover-details
+      author: Fuad Muradov
+      changes:
+        - createTable:
+            tableName: pdf_reader_turnover_details
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: total_incoming_transaction_12m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: loan_disbursement_12m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: currency_exchange_12m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: self_transfers_12m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: non_abb_turnover_l12m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: min_balance_azn_l3m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: max_balance_azn_l1m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: max_money_receive_l3m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: cnt_atm_withdrawal_l3m
+                  type: DECIMAL(19,2)
+              - column:
+                  name: response_id
+                  type: BIGINT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: calculated_detail_id
+                  type: BIGINT
+                  constraints:
+                    nullable: true
+        - addForeignKeyConstraint:
+            baseTableName: pdf_reader_turnover_details
+            baseColumnNames: response_id
+            referencedTableName: pdf_reader_responses
+            referencedColumnNames: id
+            constraintName: fk_turnover_details_response
+            onDelete: CASCADE
+        - addForeignKeyConstraint:
+            baseTableName: pdf_reader_turnover_details
+            baseColumnNames: calculated_detail_id
+            referencedTableName: pdf_reader_calculated_details
+            referencedColumnNames: id
+            constraintName: fk_turnover_details_calculated
+            onDelete: CASCADE

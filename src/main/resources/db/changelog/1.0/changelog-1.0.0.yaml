@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: Pdf Reader Request Table
+      author: Fuad Muradov
+      changes:
+        - createTable:
+            tableName: pdf_reader_requests
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: request_date
+                  type: TIMESTAMP
+              - column:
+                  name: loan_order_id
+                  type: BIGINT
+              - column:
+                  name: voen
+                  type: VARCHAR(50)
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP

@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-pdf-reader-responses
+      author: Fuad Muradov
+      changes:
+        - createTable:
+            tableName: pdf_reader_responses
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  name: created_at
+                  type: TIMESTAMP

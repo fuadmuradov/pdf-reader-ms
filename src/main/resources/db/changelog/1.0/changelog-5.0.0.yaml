@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-pdf-reader-notifications
+      author: Fuad Muradov
+      changes:
+        - createTable:
+            tableName: pdf_reader_notifications
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(500)
+              - column:
+                  name: response_id
+                  type: BIGINT
+        - addForeignKeyConstraint:
+            baseTableName: pdf_reader_notifications
+            baseColumnNames: response_id
+            referencedTableName: pdf_reader_responses
+            referencedColumnNames: id
+            constraintName: fk_notifications_response
+            onDelete: CASCADE
