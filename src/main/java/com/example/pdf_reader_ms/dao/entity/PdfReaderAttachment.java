@@ -1,10 +1,7 @@
 package com.example.pdf_reader_ms.dao.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -18,6 +15,8 @@ import static jakarta.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Getter
+@Setter
 public class PdfReaderAttachment {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -25,6 +24,7 @@ public class PdfReaderAttachment {
     private String sourceBankName;
     private String sourceDomain;
     private LocalDateTime pdfCreationDate;
+    private String fileId;
     private String fileName;
     private Boolean pdfExist;
     @ManyToOne

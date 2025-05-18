@@ -2,10 +2,7 @@ package com.example.pdf_reader_ms.dao.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -21,6 +18,8 @@ import static jakarta.persistence.FetchType.LAZY;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Getter
+@Setter
 public class PdfReaderResponse {
     @Id
     private long id;

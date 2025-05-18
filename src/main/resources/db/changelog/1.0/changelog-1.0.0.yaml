@@ -21,6 +21,9 @@ databaseChangeLog:
                   name: voen
                   type: VARCHAR(50)
               - column:
+                  name: pin
+                  type: VARCHAR(10)
+              - column:
                   name: created_at
                   type: TIMESTAMP
                   defaultValueComputed: CURRENT_TIMESTAMP
